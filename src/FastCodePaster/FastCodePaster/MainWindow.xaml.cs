@@ -120,12 +120,20 @@ namespace FastCodePaster
                     if ((int)wParam == 1)
                     {
                         ShowOrHiderMainWindow();
-                        this.tbox.Focus();
 
-                        POINT pt = new POINT();
-                        GetCursorPos(ref pt);
-                        this.Left = pt.x;
-                        this.Top = pt.y;
+                        if (Clipboard.ContainsText())
+                        {
+                            this.tbox.Text = Clipboard.GetText();
+                            this.Button_Click(null, null);
+                        }
+                        else
+                        {
+                            POINT pt = new POINT();
+                            GetCursorPos(ref pt);
+                            this.Left = pt.x;
+                            this.Top = pt.y;
+                            this.tbox.Focus();
+                        }
                     }
                     break;
             }
@@ -135,6 +143,8 @@ namespace FastCodePaster
         private void BlurWindow_Loaded(object sender, RoutedEventArgs e)
         {
             RegisterHotKey(new WindowInteropHelper(this).Handle, 1, MOD_WIN | MOD_SHIFT, 'A');
+
+            this.Visibility = Visibility.Collapsed;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
