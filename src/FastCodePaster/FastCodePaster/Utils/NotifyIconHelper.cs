@@ -49,19 +49,11 @@ namespace WindowsX.Shell.Util
             clickHander = data.ClickHandler;
 
             contextMenu = data.ContextMenu;
-            contextMenu.LostFocus += ContextMenu_LostFocus;  //TODO fix this
         }
 
         public void RemoveNotifyIcon()
         {
             notifyIcon?.Dispose();
-        }
-
-        private void ContextMenu_LostFocus(object sender, System.Windows.RoutedEventArgs e)
-        {
-            var menu = sender as System.Windows.Controls.ContextMenu;
-            if (menu != null)
-                menu.IsOpen = false;
         }
 
         private void NotifyIcon_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)

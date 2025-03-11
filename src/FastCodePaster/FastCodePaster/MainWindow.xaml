@@ -13,6 +13,9 @@
     </tianxia:BlurWindow.Background>
     <tianxia:BlurWindow.Resources>
         <ContextMenu x:Key="NotifyIconContextMenu">
+            <MenuItem Header="博客园"></MenuItem>
+            <MenuItem Header="微信公众号"></MenuItem>
+            <Separator></Separator>
             <MenuItem Header="退出"></MenuItem>
         </ContextMenu>
     </tianxia:BlurWindow.Resources>
@@ -25,6 +28,18 @@
 
         <TextBox Foreground="White" Background="Transparent" TextWrapping="WrapWithOverflow" Name="tbox"></TextBox>
 
-        <Button Content="生成" HorizontalAlignment="Center" VerticalAlignment="Center" Width="88" Height="28" IsDefault="True" Grid.Column="1" Click="Button_Click"></Button>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Name="stack_Type">
+                <RadioButton GroupName="pastetype" Content="博客园" Margin="3" IsChecked="True" Foreground="White" Checked="RadioButton_Checked"></RadioButton>
+                <RadioButton GroupName="pastetype" Content="微信公众号" Margin="3" Foreground="White" Checked="RadioButton_Checked"></RadioButton>
+            </StackPanel>
+
+            <Button Content="生成" Foreground="#1a6840" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="88" Height="28" IsDefault="True" Margin="0,0,0,10" Grid.Row="1" Click="Button_Click"></Button>
+        </Grid>
     </Grid>
 </tianxia:BlurWindow>
