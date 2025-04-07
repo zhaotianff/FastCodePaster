@@ -40,6 +40,8 @@ namespace FastCodePaster
         public static readonly uint MOD_SHIFT = 0x0004;
         public static readonly uint MOD_WIN = 0x0008;
 
+        public const int WM_QUERYENDSESSION = 0x0011;
+
         public const int WM_INPUT = 0x00FF;
         public const int WM_HOTKEY = 0x0312;
         public const int WM_COPY = 0x0301;
@@ -51,6 +53,9 @@ namespace FastCodePaster
 
         [DllImport("User32.dll")]
         public static extern bool RegisterHotKey(IntPtr hwnd, uint hotKeyId,uint modifier, uint vkCode);
+
+        [DllImport("User32.dll")]
+        public static extern bool UnRegisterHotKey(IntPtr hwnd, uint id);
 
         [DllImport("User32.dll")]
         public static extern IntPtr WindowFromPoint(POINT pOINT);
@@ -141,6 +146,10 @@ namespace FastCodePaster
                         }
                     }
                     break;
+                case WM_QUERYENDSESSION:
+                    canExit = true;
+                    UnRegisterHotKey(new WindowInteropHelper(this).Handle, 1);
+                    return IntPtr.Zero;
             }
             return IntPtr.Zero;
         }
