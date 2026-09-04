@@ -41,6 +41,7 @@ namespace FastCodePaster
         public static readonly uint MOD_WIN = 0x0008;
 
         public const int WM_QUERYENDSESSION = 0x0011;
+        public const int WM_ENDSESSION = 0x0016;
 
         public const int WM_INPUT = 0x00FF;
         public const int WM_HOTKEY = 0x0312;
@@ -147,6 +148,7 @@ namespace FastCodePaster
                     }
                     break;
                 case WM_QUERYENDSESSION:
+                case WM_ENDSESSION:
                     canExit = true;
                     UnRegisterHotKey(new WindowInteropHelper(this).Handle, 1);
                     return IntPtr.Zero;

@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BlurWindow, Version=7.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BlurWindow.7.0.1\lib\net45\BlurWindow.dll</HintPath>
@@ -117,6 +120,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Doc\Clipboard_HTMLFormat.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
